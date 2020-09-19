@@ -1,12 +1,11 @@
 <template>
-  <a-layout id="components-layout-demo-custom-trigger" class="basic_layout" :class="{aside_collapsed:collapsed}">
+  <a-layout id="components-layout-demo-custom-trigger" :class="{aside_collapsed:collapsed,basic_layout: true}">
     <a-layout-sider theme="light" v-model:collapsed="collapsed" :collapsedWidth="64" :trigger="null" collapsible>
         <div class="logo " >
           <img src="/src/assets/logo.svg"/>
           <div class="title">证书管理器</div>
         </div>
-      <BaseMenu :collapsed="collapsed" :menus="menus" :mode="'inline'"  />
-      <LeftAside></LeftAside>
+      <sider-menu :collapsed="collapsed" :menus="menus" mode="inline" theme="light"  />
     </a-layout-sider>
     <a-layout class="layout_right">
       <a-layout-header class="header_bar" style="background: #fff; padding: 0">
@@ -23,34 +22,25 @@
       <a-layout-content
           :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
       >
+        <router-link :to="'/admin/domain'">go domain</router-link>
+        <router-link :to="'/admin/index'">go index</router-link>
+        <router-link :to="{name:'index'}">go indexName</router-link>
         <router-view></router-view>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script>
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from '@ant-design/icons-vue';
 import defaultSettings from '/src/config/defaultSettings'
 import RightContent from './components/RightContent.vue'
-import BaseMenu from './components/RouteMenu/index.js'
+import SiderMenu from './components/SiderMenu.jsx'
 import LeftAside from './components/LeftAside.vue'
-
+import menuRouters from '/src/router/MenuRouters.js'
 
 export default {
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
     RightContent,
-    BaseMenu,
+    SiderMenu,
     LeftAside
   },
   data() {
@@ -73,42 +63,7 @@ export default {
         hideHintAlert: false,
         hideCopyButton: false
       },
-      menus:[
-        {
-
-          path:'/admin/index',
-          meta:{
-            title:'首页',
-            icon: 'user-outlined',
-          }
-        },
-// forms
-        {
-          path: '/form',
-          redirect: '/form/base-form',
-          meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
-          children: [
-            {
-              path: '/form/base-form',
-              name: 'BaseForm',
-              component: () => import('@/views/form/basicForm'),
-              meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-            },
-            {
-              path: '/form/step-form',
-              name: 'StepForm',
-              component: () => import('@/views/form/stepForm/StepForm'),
-              meta: { title: '分步表单', keepAlive: true, permission: [ 'form' ] }
-            },
-            {
-              path: '/form/advanced-form',
-              name: 'AdvanceForm',
-              component: () => import('@/views/form/advancedForm/AdvancedForm'),
-              meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
-            }
-          ]
-        },
-      ]
+      menus:menuRouters
     };
   },
 };

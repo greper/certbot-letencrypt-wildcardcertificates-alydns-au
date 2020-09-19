@@ -1,5 +1,5 @@
 <template>
-  <div>11111111 <user-outlined></user-outlined></div>
+  <router-view></router-view>
 </template>
 <script>
 export default {

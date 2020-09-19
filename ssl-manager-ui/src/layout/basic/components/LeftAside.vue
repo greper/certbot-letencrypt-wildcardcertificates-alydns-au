@@ -1,37 +1,18 @@
 <template>
   <a-menu theme="light" mode="inline" v-model:selectedKeys="selectedKeys">
     <a-menu-item v-for="(item,index) of menus" :key="item.path">
-      <user-outlined></user-outlined>
-      <span>{{ item.title }}</span>
-    </a-menu-item>
-
-    <a-sub-menu>
-      <template v-slot:title>
-        <span><MailOutlined /><span>Navigation One</span></span>
-      </template>
-      <a-menu-item v-for="(item,index) of menus" :key="item.path">
+      <router-link :to="item.path">
         <user-outlined></user-outlined>
         <span>{{ item.title }}</span>
-      </a-menu-item>
-    </a-sub-menu>
+      </router-link>
+    </a-menu-item>
+
   </a-menu>
 </template>
 <script>
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from '@ant-design/icons-vue';
 export default {
   name:'left-aside',
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
   },
   data() {
     return {
