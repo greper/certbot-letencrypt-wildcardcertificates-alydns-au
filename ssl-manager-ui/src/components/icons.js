@@ -4,7 +4,7 @@ import {
   UploadOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  MailOutlined,
+  MailOutlined,SmileOutlined,LoadingOutlined,SolutionOutlined
 } from '@ant-design/icons-vue';
 const arr =  [
   UserOutlined,
@@ -12,7 +12,7 @@ const arr =  [
   UploadOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  MailOutlined,
+  MailOutlined,SmileOutlined,LoadingOutlined,SolutionOutlined
 ]
 const map = {}
 for (let item of arr) {

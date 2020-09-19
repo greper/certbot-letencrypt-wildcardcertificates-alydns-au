@@ -22,9 +22,6 @@
       <a-layout-content
           :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
       >
-        <router-link :to="'/admin/domain'">go domain</router-link>
-        <router-link :to="'/admin/index'">go index</router-link>
-        <router-link :to="{name:'index'}">go indexName</router-link>
         <router-view></router-view>
       </a-layout-content>
     </a-layout>

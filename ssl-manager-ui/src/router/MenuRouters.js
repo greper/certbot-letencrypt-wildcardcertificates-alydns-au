@@ -1,5 +1,6 @@
 import IndexView from "../views/index/index.vue";
 import DomainView from "../views/domain/index.jsx";
+import DomainAddView from "../views/domain/add.vue";
 import BlankLayout from "../layout/blank/index.vue";
 
 export default [
@@ -12,6 +13,16 @@ export default [
             icon: 'UserOutlined',
         },
         component: IndexView,
+    },
+    {
+        name: 'domainAdd',
+        path: '/admin/domain/add',
+        meta: {
+            title: '添加域名',
+            auth: true,
+            icon: 'UserOutlined',
+        },
+        component: DomainAddView,
     },
     {
         name: 'domain',
