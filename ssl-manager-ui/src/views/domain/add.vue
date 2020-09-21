@@ -7,18 +7,20 @@
     <div class="steps-content">
       <a-form ref="form" :model="form" :rules="rules" :wrapperCol="{span:10,offset:7}">
         <div v-if="current === 0">
-          <a-form-item v-bind="validateInfos.domain">
-            <a-input v-model:value="modelRef.domain" size="large"
+
+          <a-form-item name="domain">
+            <a-input v-model:value="form.domain" size="large"
                      placeholder="请输入要绑定证书的泛域名，例如：*.docmirror.cn">
               <template v-slot:prefix>
                 <UserOutlined style="color:rgba(0,0,0,.25)"/>
               </template>
             </a-input>
           </a-form-item>
+
         </div>
         <div v-if="current === 1">
-          <a-form-item v-bind="validateInfos['owner.email']" placeholder="邮箱" >
-            <a-input v-model:value="modelRef.owner.email" placeholder="邮箱">
+          <a-form-item name="owner.email" placeholder="邮箱" >
+            <a-input v-model:value="form.owner.email" placeholder="邮箱">
               <template v-slot:prefix>
                 <UserOutlined style="color:rgba(0,0,0,.25)"/>
               </template>
@@ -47,54 +49,37 @@
 </template>
 <script>
 
-import { reactive, toRaw } from 'vue';
-import { useForm } from '@ant-design-vue/use/lib/index.js';
+import {reactive} from 'vue'
+
 function domainFormSetup() {
 }
 
 export default {
-  setup() {
-    const modelRef = reactive({
-      domain: '',
-      owner: {
-        email: '',
-      },
-    });
-    const {resetFields, validate, validateInfos} = useForm(
-        modelRef,
-        reactive({
-          name: [
-            {required: true,message: '请输入域名' },
-            {pattern: /^\*(\.[^.\W]+)+$/, message: "泛域名必须符合*.xxx.yyy格式"}
-          ],
-          'owner.email': [
-            {required: true, message: '请输入邮箱'},
-            {type:'email',message:'请输入正确的邮箱'}
-          ],
-        }),
-    );
-    const onSubmit = e => {
-      e && e.preventDefault();
-      return validate()
-          .then(res => {
-            console.log(res, toRaw(modelRef));
-            return res
-          })
-          .catch(err => {
-            console.log('error', err);
-          });
-    };
-    return {
-      labelCol: {span: 4},
-      wrapperCol: {span: 14},
-      validateInfos,
-      modelRef,
-      onSubmit,
-    };
-  },
   data() {
     return {
       current: 0,
+      form: {
+        domain: '*.docmirror.com',
+        provider: {},
+        email:'',
+        owner:{email:'xiaojunnuo@qq.com'},
+      },
+      rules: {
+        domain: [
+          {required: true, message: '请填写域名'},
+          {pattern: /^\*(\.[^.\W]+)+$/, message: "泛域名必须符合*.xxx.yyy格式"}
+        ],
+        owner:{
+          email:[
+            {required: true, message: '请填写邮箱'},
+            {type:'email',message:'请输入正确的邮箱'}
+          ],
+        },
+        'owner.email':[
+            {required: true, message: '请填写邮箱'},
+            {type:'email',message:'请输入正确的邮箱'}
+          ],
+      },
       steps: [
         {
           title: '域名',
@@ -115,11 +100,19 @@ export default {
       ],
     };
   },
+  setup() {
+    const domain = domainFormSetup()
+
+    return {...domain}
+  },
   methods: {
     next() {
-      this.onSubmit().then(()=>{
-        this.current++;
-      })
+      this.$refs.form
+          .validate()
+          .then(() => {
+            console.log(111)
+            this.current++;
+          })
     },
     prev() {
       this.current--;
