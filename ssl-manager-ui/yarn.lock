@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@ant-design-vue/use@^0.0.1-alpha.4":
+  version "0.0.1-alpha.4"
+  resolved "https://registry.npm.taobao.org/@ant-design-vue/use/download/@ant-design-vue/use-0.0.1-alpha.4.tgz#cdd57f200bee8dd2b61e1808baa843807dd55ff2"
+  integrity sha1-zdV/IAvujdK2HhgIuqhDgH3VX/I=
+  dependencies:
+    "@vue/runtime-dom" "^3.0.0-rc.1"
+    async-validator "^3.4.0"
+    lodash-es "^4.17.15"
+    resize-observer-polyfill "^1.5.1"
+
 "@ant-design/colors@^4.0.0":
   version "4.0.5"
   resolved "https://registry.npmjs.org/@ant-design/colors/-/colors-4.0.5.tgz#d7d100d7545cca8f624954604a6892fc48ba5aae"
@@ -448,12 +458,27 @@
     "@vue/compiler-dom" "3.0.0-rc.12"
     "@vue/shared" "3.0.0-rc.12"
 
+"@vue/reactivity@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@vue/reactivity/download/@vue/reactivity-3.0.0.tgz?cache=0&sync_timestamp=1600443054023&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Freactivity%2Fdownload%2F%40vue%2Freactivity-3.0.0.tgz#fd15632a608650ce2a969c721787e27e2c80aa6b"
+  integrity sha1-/RVjKmCGUM4qlpxyF4fifiyAqms=
+  dependencies:
+    "@vue/shared" "3.0.0"
+
 "@vue/reactivity@3.0.0-rc.12":
   version "3.0.0-rc.12"
   resolved "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.0.0-rc.12.tgz#9f5c6da78729fe80cc47d23bc8b6c09b36998a29"
   integrity sha512-Cz2wwwH7QpG2BDmmZ9Lia+soji9i3QjzMf1Mko3kIEHHGkeid6OxOaMXBEMCJjAyiRt+1VTHBZv6FgsUJeaDAQ==
   dependencies:
     "@vue/shared" "3.0.0-rc.12"
+
+"@vue/runtime-core@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@vue/runtime-core/download/@vue/runtime-core-3.0.0.tgz#480febf1bfe32798b6abbd71a88f8e8b473a51c2"
+  integrity sha1-SA/r8b/jJ5i2q71xqI+Oi0c6UcI=
+  dependencies:
+    "@vue/reactivity" "3.0.0"
+    "@vue/shared" "3.0.0"
 
 "@vue/runtime-core@3.0.0-rc.12":
   version "3.0.0-rc.12"
@@ -471,6 +496,20 @@
     "@vue/runtime-core" "3.0.0-rc.12"
     "@vue/shared" "3.0.0-rc.12"
     csstype "^2.6.8"
+
+"@vue/runtime-dom@^3.0.0-rc.1":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@vue/runtime-dom/download/@vue/runtime-dom-3.0.0.tgz#e0d1f7c7e22e1318696014cc3501e06b288c2e11"
+  integrity sha1-4NH3x+IuExhpYBTMNQHgayiMLhE=
+  dependencies:
+    "@vue/runtime-core" "3.0.0"
+    "@vue/shared" "3.0.0"
+    csstype "^2.6.8"
+
+"@vue/shared@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.0.tgz?cache=0&sync_timestamp=1600441264460&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.0.0.tgz#ec089236629ecc0f10346b92f101ff4339169f1a"
+  integrity sha1-7AiSNmKezA8QNGuS8QH/QzkWnxo=
 
 "@vue/shared@3.0.0-rc.12":
   version "3.0.0-rc.12"
@@ -614,7 +653,7 @@ astral-regex@^1.0.0:
   resolved "https://registry.npmjs.org/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
 
-async-validator@^3.3.0:
+async-validator@^3.3.0, async-validator@^3.4.0:
   version "3.4.0"
   resolved "https://registry.npmjs.org/async-validator/-/async-validator-3.4.0.tgz#871b3e594124bf4c4eb7bcd1a9e78b44f3b09cae"
   integrity sha512-VrFk4eYiJAWKskEz115iiuCf9O0ftnMMPXrOFMqyzGH2KxO7YwncKyn/FgOOP+0MDHMfXL7gLExagCutaZGigA==

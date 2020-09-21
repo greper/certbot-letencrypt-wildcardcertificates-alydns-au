@@ -65,14 +65,14 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.ant-pro-drop-down {
-  >>> .action {
-    margin-right: 8px;
-  }
-  >>> .ant-dropdown-menu-item {
-    min-width: 160px;
-  }
-}
+//.ant-pro-drop-down {
+//  >>> .action {
+//    margin-right: 8px;
+//  }
+//  >>> .ant-dropdown-menu-item {
+//    min-width: 160px;
+//  }
+//}
 .ant-pro-account-avatar{
   display:flex;
   align-items: center;

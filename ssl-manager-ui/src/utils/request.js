@@ -26,7 +26,7 @@ const errorHandler = (error) => {
         description: data.message
       })
     }
-    if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
+    if (error.response.status === 401 ) {
       notification.error({
         message: 'Unauthorized',
         description: 'Authorization verification failed'
@@ -40,6 +40,10 @@ const errorHandler = (error) => {
       }
     }
   }
+  notification.error({
+    message: '请求错误',
+    description: error.message
+  })
   console.error(error)
   return Promise.reject(error)
 }
@@ -57,7 +61,27 @@ request.interceptors.request.use(config => {
 
 // response interceptor
 request.interceptors.response.use((response) => {
-  return response.data
+  const ret = response.data;
+  console.log('response',response)
+  if(!ret){
+    notification.error({
+      message: '未知错误',
+      description: '请求没有返回结果'
+    })
+    return
+  }else{
+    if( ret.code ===0){
+      return ret
+    }else if(ret.code === 1){
+      //返回错误
+      notification.error({
+        message: '请求错误',
+        description: ret.msg
+      })
+      return;
+    }
+  }
+  return ret
 }, errorHandler)
 
 const installer = {
